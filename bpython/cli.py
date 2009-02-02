@@ -1184,7 +1184,8 @@ class Repl(object):
             return ''
 
         elif self.c in ('^L', chr(12)): # C-l
-            self.redraw()
+            # TODO: Show the repl after clearing the screen.
+            self.scr.clear()
             return ''
 
         elif self.c in (chr(4), '^D'): # C-d
@@ -1555,7 +1556,7 @@ def init_wins(scr, cols):
 # problems that needed dirty hackery to fix. :)
 
     statusbar = Statusbar(scr, main_win,
-        ".:: <C-d> Exit  <C-r> Rewind  <F2> Save  <F8> Pastebin ::.",
+        ".:: <C-d> Exit  <C-r> Rewind  <C-l> Clear screen  <F2> Save  <F8> Pastebin ::.",
         (cols["g"]) * cols["y"] + 1)
 
     return main_win, statusbar
